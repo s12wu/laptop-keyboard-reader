@@ -12,6 +12,42 @@ The typing experience has no difference to the time when the keyboard was connec
 
 Heavily inspired by https://www.instructables.com/How-to-Make-a-USB-Laptop-Keyboard-Controller/
 
+## CircuitPython libraries
+Download the [CircuitPython library bundle](https://circuitpython.org/libraries).
+
+Copy `adafruit_hid` and `adafruit_mcp230xx` to `CIRCUIPY/lib`.
+
+Completely set up with localization, the directory structure looks like this:
+```
+$ tree
+CIRCUITPY
+├── code.py
+└── lib
+   ├── adafruit_hid
+   │  ├── __init__.mpy
+   │  ├── consumer_control.mpy
+   │  ├── consumer_control_code.mpy
+   │  ├── keyboard.mpy
+   │  ├── keyboard_layout_base.mpy
+   │  ├── keyboard_layout_us.mpy
+   │  ├── keycode.mpy
+   │  └── mouse.mpy
+   ├── adafruit_mcp230xx
+   │  ├── __init__.mpy
+   │  ├── digital_inout.mpy
+   │  ├── mcp23s08.mpy
+   │  ├── mcp23s17.mpy
+   │  ├── mcp23sxx.mpy
+   │  ├── mcp23xxx.mpy
+   │  ├── mcp230xx.mpy
+   │  ├── mcp23008.mpy
+   │  ├── mcp23016.mpy
+   │  └── mcp23017.mpy
+   ├── keyboard_layout_win_gr.py
+   └── keycode_win_gr.py
+
+```
+
 ## Decoding your keymap
 The MatrixDecoder.py program can be used to decode your keyboard matrix.
 How to use it:
