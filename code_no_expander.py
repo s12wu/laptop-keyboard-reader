@@ -6,7 +6,6 @@ from adafruit_hid.consumer_control_code import ConsumerControlCode
 
 import board
 import digitalio
-from busio import I2C
 import time
 import microcontroller
 
@@ -23,7 +22,7 @@ def go_0(p):
     pins[p].value = 0                              #drive low
 
 
-# definition of matrix keymap (which pin connection belongs to which key)
+# definition of matrix keymap (which pin connection belongs to which key). YOURS WILL BE DIFFERENT
 keymap=[
     [ 0, 15, Keycode.PRINT_SCREEN ],
     [ 0, 14, Keycode.ONE ],
@@ -125,24 +124,14 @@ except:
     time.sleep(15)
     microcontroller.reset()
 
-#setup the mcp23017 port expander
-from adafruit_mcp230xx.mcp23017 import MCP23017
-i2c = I2C(board.GP27, board.GP26, frequency=1000000)
-mcp = MCP23017(i2c)
-
-
 #which pins is the keyboard ribbon connector connected to?
 KBD_pinnumbers = [board.GP2, board.GP3, board.GP4, board.GP5, board.GP6, board.GP7, board.GP8, board.GP9, board.GP10,
                   board.GP11, board.GP12, board.GP13, board.GP14, board.GP15, board.GP16, board.GP17, board.GP18, board.GP19, board.GP20,
-                  board.GP21,
-                  mcp.get_pin(0),mcp.get_pin(1),mcp.get_pin(2)]
+                  board.GP21]
 
 pins = []
 for x,p in enumerate(KBD_pinnumbers):
-    if x<20: pins.append(digitalio.DigitalInOut(p))
-    else: pins.append(p) # mcp pins are already DigitalInOut'ed and can just be copied.
-    
-    # The 20 is just there because in my case the first 20 pins are directly connected.
+    pins.append(digitalio.DigitalInOut(p))
 
 
 #set each pin as input

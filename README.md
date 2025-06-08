@@ -104,6 +104,8 @@ if you have a US keyboard.
 ## Upload the main code
 With the correct pins and keymap in the main code.py file, copy it to the CIRCUIPY drive of your Pi Pico.
 
+code_no_expander.py has the I²C port expander part completely removed, if you connected all your keyboard pins directly to GPIO.
+
 ## My Circuit
 For inspiration: this is what my hand soldered board looks like. Yup, very messy.
 
